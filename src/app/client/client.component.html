@@ -1,0 +1,37 @@
+<div style="background:lightpink;">
+    <mat-card-content>
+      <app-form-option
+        [label] = "'Name'"
+        (input) =  nameSelected($event)
+        #cmp
+      >
+      </app-form-option>
+      <app-form-option
+        [label] = "'Surname'"
+        (input) =  surnameSelected($event)
+        #cmp
+      >
+      </app-form-option>
+      <app-form-option
+        [label] = "'Level'"
+        [options] = "clientLevels"
+        (selected) =  levelSelected($event)
+        #cmp
+        >
+      </app-form-option>
+
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button
+              [disabled]="!isReady()"
+              (click)="submit();reset()">
+        ADD
+      </button>
+      <button mat-flat-button
+              (click)="reset()">
+        RESET
+      </button>
+    </mat-card-actions>
+
+</div>

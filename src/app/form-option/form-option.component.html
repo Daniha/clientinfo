@@ -1,0 +1,24 @@
+<div style="background: azure">
+  <Form>
+  <mat-form-field>
+    <input type="text"
+           placeholder={{label}}
+           matInput
+           [formControl]="myControl"
+           [matAutocomplete]="auto"
+
+    >
+    <button mat-button *ngIf="myControl.value" mat-suffix mat-icon-button (click)="clearValue()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-autocomplete class="autocomplete" #auto="matAutocomplete"  (optionSelected)="setActive($event.option.value)">
+      <mat-option class="autocomplete-option" *ngFor="let option of filteredOptions | async" [value]="option.name">
+        <div class="autocomplete-option-container">
+          <div><p class="option-text mat-caption">{{option.name}}</p></div>
+        </div>
+        {{option.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</Form>
+</div>
